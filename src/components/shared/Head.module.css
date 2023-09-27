@@ -1,0 +1,15 @@
+.encabezado {
+    @apply bg-white flex items-center justify-between h-12 shadow pl-4 relative;
+}
+
+.logo {
+    @apply pr-2 h-9 w-9;
+}
+
+.logoUser {
+    @apply flex px-6 h-12 w-8 hover:bg-gray-300
+}
+
+.text {
+    @apply font-semibold text-xl
+}
