@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom";
 import style from "./GoalElement.module.css";
 
 
-function GoalElement({icon, frecuencia, periodo, detalles, completado, meta, plazo}) {
+function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta, plazo}) {
   return (
-    <div className={style.goalElement + " card "}>
-      <div className="flex gap-28 px-10 items-center">
+    <Link to={`/lista/${id}`} className={style.goalElement + " card"}>
+      <div className="flex  items-center">
         <div className={style.icon}>{icon}</div>
 
         <p className={style.frecuencia}>
           {frecuencia}
-          <sub className="text-sm text-gray-500 font-semibold">/ {periodo}</sub>
+          <sub className="text-sm text-gray-500 font-semibold ml-1">/ {periodo}</sub>
         </p>
 
         <p className={style.detalles}>{detalles}</p>
@@ -19,9 +20,9 @@ function GoalElement({icon, frecuencia, periodo, detalles, completado, meta, pla
           <span className="text-sm font-semibold mb-2">
             {completado} / <span className="text-gray-500">{meta}</span>
           </span>
-          <div className="w-36 h-1 rounded-xl bg-gray-300">
+          <div className="w-36 h-1 rounded-xl nm-flat-gray-100 bg-gray-300">
             <div
-              className="bg-gradient-to-r from-purple-600 to-pink-600 h-1 w-3/5 rounded-full"
+              className=" bg-gradient-to-l  bg-purple-600 via-purple-500 from-pink-500  h-1 w-3/5 rounded-full"
               style={{width: `${Math.round((completado / meta ) * 100)}%`}}
             ></div>
           </div>
@@ -29,7 +30,7 @@ function GoalElement({icon, frecuencia, periodo, detalles, completado, meta, pla
 
         <button className="button button--gray">Completado</button>
       </div>
-    </div>
+    </Link>
   );
 }
 

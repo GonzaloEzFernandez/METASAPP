@@ -7,7 +7,7 @@
 }
 
 .logoUser {
-    @apply flex px-6 h-12 w-8 hover:bg-gray-300
+    @apply flex px-5 h-12 w-8 hover:bg-slate-800 hover:text-white
 }
 
 .text {

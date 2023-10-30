@@ -1,5 +1,5 @@
 .asideItem1 {
-    @apply flex px-6 py-7 items-center w-full h-12 gap-4 hover:bg-slate-900 hover:text-white cursor-pointer;
+    @apply flex px-6 py-7 items-center w-full h-12 gap-4 hover:bg-slate-800 hover:text-white cursor-pointer;
 }
 
 .asideText {

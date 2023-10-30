@@ -1,15 +1,15 @@
 .goalElement {
-    @apply flex justify-between py-3 
+    @apply flex justify-between py-3
 }
 
 .icon {
-    @apply nm-inset-gray-100 rounded-full h-14 w-14 flex items-center justify-center text-2xl
+    @apply nm-inset-gray-100  rounded-full h-14 w-14 flex items-center justify-center text-2xl
 }
 
 .frecuencia {
-    @apply   items-center text-3xl 
+    @apply   items-start text-3xl ml-28 mr-28 
 }
 
 .detalles {
-    @apply font-semibold text-sm
+    @apply font-semibold text-sm 
 }

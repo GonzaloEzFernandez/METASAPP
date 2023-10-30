@@ -9,17 +9,19 @@ function MainPart({ children }) {
       <nav className={style.aside}>
         <Vinculo 
          icon={faBookOpen}
-         href="/lista"
+         to="/lista"
          text="Lista de Metas "
         />
         
         <Vinculo 
         icon={faSquarePlus}
-        href={"/crear"}
+        to={"/crear"}
         text="Crear Meta"
         />
       </nav>
-      <main className={style.main}>{children}</main>
+      <main className="scrollbar-container w-4/5 h-full mr-1">
+        {children}
+      </main>
     </div>
   );
 }
