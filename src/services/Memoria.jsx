@@ -1,4 +1,6 @@
-import { createContext, useReducer } from "react";
+import Context from "./Context";
+import Reducer from "./Reducer";
+import { useReducer } from "react";
 
 const listMock = [
   {
@@ -43,73 +45,24 @@ const listMock = [
   },
 ];
 
-const initialState = {
-  order: [], // Contiene las IDs de las metas en un orden específico.
-  objects: {}, // Contiene las IDs como propiedades y los valores de cada meta correspondiente
-};
+const memoria = localStorage.getItem("metas");
+const initialState = memoria
+  ? JSON.parse(memoria)
+  : {
+      order: [], // Contiene las IDs de las metas en un orden específico.
+      objects: {}, // Contiene las IDs como propiedades y los valores de cada meta correspondiente
+    };
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "TRANSFORM": {
-      const goals = action.goals;
-      const newState = {
-        order: goals.map((goal) => goal.id), // lista con cada una de las IDs
-        objects: goals.reduce(
-          (object, goal) => ({ ...object, [goal.id]: goal }),
-          {}
-        ), // Toma un objeto vacio, copia el objeto y creamos una nueva propiedad(con la id) y los valores de la meta
-      };
-      return newState;
-    }
-
-    case "CREATE": {
-      const id = Math.random();
-      const newState = {
-        order: [...state.order, id],
-        objects: {
-          ...state.objects,
-          [id]: action.goal,
-        },
-      };
-      return newState;
-    }
-
-    case "ACTUALIZAR": {
-      const id = action.goal.id;
-      state.objects[id] = {
-        ...state.objects[id],
-        ...action.goal,
-      };
-      const newState = { ...state };
-      return newState;
-    }
-
-    case "BORRAR": {
-      const id = action.id;
-      const newOrder = state.order.filter((item) => item !== id);
-      delete state.objects[id];
-      const newState = {
-        order: newOrder,
-        objects: state.objects,
-      };
-      return newState;
-    }
-  }
-};
-
-const goals = reducer(initialState, { type: "TRANSFORM", goals: listMock });
-
-export const GoalContext = createContext(null);
+ Reducer(initialState, {
+  type: "TRANSFORM_STATE",
+  payload: listMock,
+}); 
 
 function Memoria({ children }) {
-  const [state, dispatch] = useReducer(reducer, goals);
+  const [state, dispatch] = useReducer(Reducer, initialState);
 
   return (
-    <div>
-      <GoalContext.Provider value={[state, dispatch]}>
-        {children}
-      </GoalContext.Provider>
-    </div>
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
   );
 }
 export default Memoria;
