@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import Memoria from "./services/Memoria.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <Memoria>
       <BrowserRouter>
         <App />
