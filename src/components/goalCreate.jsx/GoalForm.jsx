@@ -1,10 +1,13 @@
-import { useContext, useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Context from "../../services/Context";
 import style from "./GoalForm.module.css";
-import { GoalContext } from "../../services/Memoria";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function GoalForm() {
+  const [state, dispatch] = useContext(Context);
+  const navegation = useNavigate();
+  const { id } = useParams();
 
   const [form, setForm] = useState({
     icon: "",
@@ -19,6 +22,7 @@ function GoalForm() {
   const momet = ["Día", "Semana", "Mes", "Cuatrimestres", "Semestre"];
   const iconos = [
     "🚴‍♀️",
+    "🏃",
     "💻",
     "🎮",
     "🎭",
@@ -27,6 +31,7 @@ function GoalForm() {
     "🥦",
     "🚵",
     "💪",
+    "📚",
     "📝",
     "⚽",
   ];
@@ -37,39 +42,43 @@ function GoalForm() {
     setForm((state) => ({ ...state, [prop]: value }));
   };
 
-  const { id } = useParams();
+  /* Crear nuevo elemento */
+  const handleCreate = () => {
+    dispatch({
+      type: "CREATE",
+      payload: form,
+    });
+    navegation("/lista");
+  };
 
-  const navegation = useNavigate();
+  const handleCancel = () => {
+    navegation("/lista");
+  };
 
-  const [state, dispatch] = useContext(GoalContext);
+  const handleUpdate = () => {
+    dispatch({
+      type: "UPDATE",
+      payload: form,
+    });
+    navegation("/lista");
+  };
 
+  const handleDelete = () => {
+    dispatch({
+      type: "DELETE",
+      payload: id,
+    });
+    navegation("/lista");
+  };
+
+  const memoriGoal = state.objects[id];
   useEffect(() => {
-    const metaMemoria = state.objects[id];
     if (!id) return;
-    if (!metaMemoria) {
-      return navegation("/NoEncontrado");
+    if (!memoriGoal) {
+      navegation("/lista");
     }
-    setForm(metaMemoria);
-  }, [id]);
-
-  const crear = () => {
-    dispatch({ type: "CREATE", goal: form });
-    navegation("/");
-  };
-
-  const actualizar = () => {
-    dispatch({ type: "ACTUALIZAR", goal: form });
-    navegation("/");
-  };
-
-  const borrar = () => {
-    dispatch({ type: "BORRAR", id });
-    navegation("/");
-  };
-
-  const cancelar = () => {
-    navegation("/");
-  };
+    setForm(memoriGoal);
+  }, [id, navegation, memoriGoal]);
 
   return (
     <div className="rounded-xl nm-flat-gray-50  pt-3 mx-4 my-6 overflow-hidden">
@@ -107,7 +116,7 @@ function GoalForm() {
               onChange={(e) => handleChange("periodo", e.target.value)}
             >
               {momet.map((option) => (
-                <option> {option} </option>
+                <option key={option}> {option} </option>
               ))}
             </select>
           </div>
@@ -157,27 +166,30 @@ function GoalForm() {
           onChange={(e) => handleChange("icon", e.target.value)}
         >
           {iconos.map((icon) => (
-            <option value={icon}> {icon} </option>
+            <option value={icon} key={icon}>
+              {" "}
+              {icon}{" "}
+            </option>
           ))}
         </select>
       </form>
       <div className={style.botones}>
         {!id && (
-          <button onClick={crear} className="button button--black">
+          <button className="button button--black" onClick={handleCreate}>
             Crear
           </button>
         )}
         {id && (
-          <button onClick={actualizar} className="button button--black">
+          <button onClick={handleUpdate} className="button button--black">
             Actualizar
           </button>
         )}
         {id && (
-          <button onClick={borrar} className="button button--red">
+          <button onClick={handleDelete} className="button button--red">
             Borrar
           </button>
         )}
-        <button onClick={cancelar} className="button button--gray">
+        <button onClick={handleCancel} className="button button--gray">
           Cancelar
         </button>
       </div>

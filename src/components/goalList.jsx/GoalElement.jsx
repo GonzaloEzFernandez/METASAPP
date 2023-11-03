@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import style from "./GoalElement.module.css";
+import { list } from "postcss";
 
 
-function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta, plazo}) {
+function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta}) {
   return (
     <Link to={`/lista/${id}`} className={style.goalElement + " card"}>
       <div className="flex  items-center">
