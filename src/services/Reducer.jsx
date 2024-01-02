@@ -17,11 +17,15 @@ const Reducer = (state, action) => {
 
     case "CREATE": {
       const ID = uuidv4();
+      const newGoal = {
+        id: ID,
+        ...action.payload,
+      };
       const newState = {
         order: [...state.order, ID],
         objects: {
           ...state.objects,
-          [ID]: action.payload,
+          [ID]: newGoal,
         },
       };
       console.log(newState);

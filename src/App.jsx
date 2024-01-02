@@ -2,7 +2,7 @@ import Layout from "./components/shared/Layout";
 import { Route, Routes } from "react-router-dom";
 import GoalForm from "./components/goalCreate.jsx/GoalForm";
 import GoalElement from "./components/goalList.jsx/List";
-import NoEncontrado from "./components/shared/NoEncontrado";
+import Perfil from "./components/shared/Perfil"
 import Modal from "./components/shared/Modal";
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
           />
         </Route>
         <Route path="/crear" element={<GoalForm />} />
+      <Route path="/perfil" element={<Perfil />} />
       </Route>
-      <Route path="*" element={<NoEncontrado />} />
     </Routes>
   );
 }

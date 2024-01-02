@@ -19,7 +19,7 @@ function MainPart({ children }) {
         text="Crear Meta"
         />
       </nav>
-      <main className="scrollbar-container w-4/5 h-full mr-1">
+      <main className="scrollbar-container sm:w-full lg:w-4/5 h-full">
         {children}
       </main>
     </div>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import style from "./GoalElement.module.css";
-import { list } from "postcss";
 
 
 function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta}) {

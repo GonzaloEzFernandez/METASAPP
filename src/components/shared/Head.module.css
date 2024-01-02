@@ -7,8 +7,13 @@
 }
 
 .logoUser {
-    @apply flex px-5 h-12 w-8 hover:bg-slate-800 hover:text-white
+    @apply hidden lg:flex lg:px-5 lg:h-12 lg:w-8 lg:hover:bg-slate-800 lg:hover:text-white 
 }
+
+.logoHamburguer {
+    @apply flex  py-7 pl-6 items-center w-full h-12 gap-4 hover:bg-slate-800 hover:text-white cursor-pointer
+}
+
 
 .text {
     @apply font-semibold text-xl

@@ -1,10 +1,10 @@
 .mainPart {
     height: calc(100vh - theme("height.MainPart"));
-    @apply  flex  w-full 
+    @apply  flex w-full
 }
 
 .aside {
-    @apply bg-gray-50 flex items-center flex-col w-1/5 h-full;
+    @apply bg-gray-50  hidden lg:flex lg:items-center lg:flex-col lg:w-1/5 lg:h-full;
 }
 
 

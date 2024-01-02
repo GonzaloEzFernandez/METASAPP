@@ -81,8 +81,8 @@ function GoalForm() {
   }, [id, navegation, memoriGoal]);
 
   return (
-    <div className="rounded-xl nm-flat-gray-50  pt-3 mx-4 my-6 overflow-hidden">
-      <form className="px-6">
+    <div className={!id ? "card overflow-hidden w-full  " : ""}>
+      <form className="p-4">
         <label className={style.label} htmlFor="detalle">
           Describe tu Meta
         </label>
@@ -167,8 +167,7 @@ function GoalForm() {
         >
           {iconos.map((icon) => (
             <option value={icon} key={icon}>
-              {" "}
-              {icon}{" "}
+              {icon}
             </option>
           ))}
         </select>

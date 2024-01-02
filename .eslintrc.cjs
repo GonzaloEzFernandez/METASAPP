@@ -16,5 +16,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    rules: {
+      "react/prop-types": [1, { ignore: ["propNameToIgnore"], customValidators: [], skipUndeclared: true }]
+    },
   },
 }
