@@ -18,7 +18,7 @@ function List() {
               en el tiempo! 😁
             </h1>
             <Link
-              to="/crear"
+              to="/METASAPP/crear"
               className="flex items-center gap-2 button button--gray"
             >
               <svg
@@ -43,9 +43,7 @@ function List() {
         state.order.map((id) => (
           <GoalElement key={id} {...state.objects[id]}></GoalElement>
         ))
-      )
-      
-      }
+      )}
       <Outlet />
     </>
   );

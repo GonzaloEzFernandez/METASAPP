@@ -48,11 +48,11 @@ function GoalForm() {
       type: "CREATE",
       payload: form,
     });
-    navegation("/lista");
+    navegation("/METASAPP/lista");
   };
 
   const handleCancel = () => {
-    navegation("/lista");
+    navegation("/METASAPP/lista");
   };
 
   const handleUpdate = () => {
@@ -60,7 +60,7 @@ function GoalForm() {
       type: "UPDATE",
       payload: form,
     });
-    navegation("/lista");
+    navegation("/METASAPP/lista");
   };
 
   const handleDelete = () => {
@@ -68,14 +68,14 @@ function GoalForm() {
       type: "DELETE",
       payload: id,
     });
-    navegation("/lista");
+    navegation("/METASAPP/lista");
   };
 
   const memoriGoal = state.objects[id];
   useEffect(() => {
     if (!id) return;
     if (!memoriGoal) {
-      navegation("/lista");
+      navegation("/METASAPP/lista");
     }
     setForm(memoriGoal);
   }, [id, navegation, memoriGoal]);

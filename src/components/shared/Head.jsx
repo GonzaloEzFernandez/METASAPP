@@ -10,21 +10,20 @@ function Head() {
 
   const handleDropDownMenu = () => {
     setDropDownMuenu(!dropDownMenu);
-   
   };
   return (
     <header className={style.encabezado}>
       <nav className="flex items-center">
         <FontAwesomeIcon icon={faFire} className={style.logo} />
-        <Link to="/" className={style.text}>
+        <Link to="/METASAPP/lista" className={style.text}>
           METAS APP
         </Link>
       </nav>
-      <nav>   
-          <Link onClick={handleDropDownMenu} to="/perfil">
-            <FontAwesomeIcon icon={faUserGear} className={style.logoUser} />
-          </Link>
-          <MobileMenu/>
+      <nav>
+        <Link onClick={handleDropDownMenu} to="perfil">
+          <FontAwesomeIcon icon={faUserGear} className={style.logoUser} />
+        </Link>
+        <MobileMenu />
       </nav>
     </header>
   );

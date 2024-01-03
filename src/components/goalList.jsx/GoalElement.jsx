@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 import style from "./GoalElement.module.css";
 
-
-function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta}) {
+function GoalElement({
+  id,
+  icon,
+  frecuencia,
+  periodo,
+  detalles,
+  completado,
+  meta,
+}) {
   return (
-    <Link to={`/lista/${id}`} className={style.goalElement + " card"}>
+    <Link to={`lista/${id}`} className={style.goalElement + " card"}>
       <div className="flex  items-center">
         <div className={style.icon}>{icon}</div>
 
         <p className={style.frecuencia}>
           {frecuencia}
-          <sub className="text-sm text-gray-500 font-semibold ml-1">/ {periodo}</sub>
+          <sub className="text-sm text-gray-500 font-semibold ml-1">
+            / {periodo}
+          </sub>
         </p>
 
         <p className={style.detalles}>{detalles}</p>
@@ -23,7 +32,7 @@ function GoalElement({ id, icon, frecuencia, periodo, detalles, completado, meta
           <div className="w-36 h-1 rounded-xl nm-flat-gray-100 bg-gray-300">
             <div
               className=" bg-gradient-to-l  bg-purple-600 via-purple-500 from-pink-500  h-1 w-3/5 rounded-full"
-              style={{width: `${Math.round((completado / meta ) * 100)}%`}}
+              style={{ width: `${Math.round((completado / meta) * 100)}%` }}
             ></div>
           </div>
         </div>

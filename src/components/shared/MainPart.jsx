@@ -9,13 +9,13 @@ function MainPart({ children }) {
       <nav className={style.aside}>
         <Vinculo 
          icon={faBookOpen}
-         to="/lista"
+         to="lista"
          text="Lista de Metas "
         />
         
         <Vinculo 
         icon={faSquarePlus}
-        to={"/crear"}
+        to={"crear"}
         text="Crear Meta"
         />
       </nav>
